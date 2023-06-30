@@ -1,0 +1,61 @@
+import random
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Player
+hands = [rock, paper, scissors]
+player_chooses = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for scissors."))
+if player_chooses > 2 or player_chooses < 0:
+  print("Ivalid number, you lose!")
+
+else:
+  print(hands[player_chooses])
+
+  #Opponent (computer)
+  
+  computer_chooses = random.randint(0, 2)
+  computer_choice = hands[computer_chooses]
+  print(f"Computer chose: {computer_choice}")
+  
+  #Both picks
+  
+  picks = []
+  picks.append([player_chooses])
+  picks.append([computer_chooses])
+  
+  win = [[0], [2]], [[2], [1]], [[1], [0]]
+  lose = [[2, 0]], [[1, 2]], [[0, 1]]
+  
+  if picks == win[0] or picks == win[1]:
+    print("You won!")
+  elif picks == win[2]:
+    print("You won!")
+  elif picks[0] == picks[1]:
+    print("Tie!")
+  else:
+    print("You lost!")
